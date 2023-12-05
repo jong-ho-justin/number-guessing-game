@@ -23,8 +23,16 @@ class Game():
         player_guess = self.get_players_guess()
 
     def get_players_guess(self):
-        player_guess = input("Guess a number from 0 to 100? ")
-        if player_guess.isnumeric():
-            player_guess = int(player_guess)
-        if not 0 >= player_guess >= 100 or type(player_guess) is not int:
-            player_guess = input("I don't think that is a number, please try again: ")
+        need_valid_input = True
+        while need_valid_input:
+            player_input = input("Guess a number from 0 to 100: ")
+            if player_input.lower() == "exit":
+                player_input = None
+                need_valid_input = True
+            if player_input.isnumeric():
+                player_input = int(player_input)
+                if 0 <= player_input <= 100:
+                    need_valid_input = False
+            else:
+                print("That is not a valid input.\n")
+        return player_input
