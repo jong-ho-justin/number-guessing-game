@@ -18,7 +18,7 @@ class Game():
 
     # just a method that welcomes the player when game is initialized
     def start_message(self):
-        print("Welcome. Guess a game from 0-100. You have 5 chance. Goodluck!\n")
+        print("Welcome. This is a game where you guess a random number from a range you pick. You have 5 chance. Goodluck!\n")
 
     # method for starting game, loops the game_round method until either self.__game_won turns true or until 5 attempts are made
     def game_start(self):
@@ -38,9 +38,11 @@ class Game():
             self.__attempts += 1
             print(f"Darn, it wasn't {player_guess}! You have {5-self.__attempts} attempts left. \n")
     
+    # method for getting the range that the player will guess
     def get_player_range(self) -> int:
         need_valid_input = True
 
+        # loop for getting the start of range
         while need_valid_input:
             start_range = input("What range would you like to guess from? From: ")
 
@@ -53,6 +55,7 @@ class Game():
 
         need_valid_input = True
 
+        # loop for getting the end of range
         while need_valid_input:
             end_range = input("To: ")
 
